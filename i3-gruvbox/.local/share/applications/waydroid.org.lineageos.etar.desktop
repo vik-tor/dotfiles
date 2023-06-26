@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Calendar
+Exec=waydroid app launch org.lineageos.etar
+Icon=/home/manv/.local/share/waydroid/data/icons/org.lineageos.etar.png
+X-Purism-FormFactor=Workstation;Mobile;

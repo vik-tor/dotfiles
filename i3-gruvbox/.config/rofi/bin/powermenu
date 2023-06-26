@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+rofi_command="rofi -theme $HOME/.config/rofi/config/powermenu.rasi"
+
+uptime=$(uptime -p | sed -e 's/up //g')
+
+shutdown="襤"
+reboot=""
+suspend=""
+logout="﫼"
+
+notify_id=20
+
+countdown () {
+	for sec in `seq $1 -1 1`; do
+		dunstify -t 1100 -r $notify_id -a Power "$2 in : $sec" -i $3
+		sleep 1
+	done
+}
+suspend () {
+	countdown '10' 'Sleeping' 'system-suspend'
+	sleep 1 && mpc -q pause && systemctl suspend
+}
+
+shutdown () {
+	countdown '10' 'Powering off' 'system-shutdown'
+	sleep 1 && mpc -q pause && systemctl poweroff
+}
+
+reboot () {
+	countdown '10' 'Restarting' 'system-reboot'
+	sleep 1 && mpc -q pause && systemctl reboot
+}
+
+options="$suspend\n$logout\n$reboot\n$shutdown"
+
+chosen="$(echo -e "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 0)"
+case $chosen in
+	$shutdown)
+		shutdown
+  ;;
+  $reboot)
+  	reboot
+  ;;
+  $suspend)
+  	suspend
+  ;;
+  $logout)
+		i3-msg exit
+  ;;
+esac

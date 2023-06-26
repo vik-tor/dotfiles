@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Simplenote
+Exec=/opt/microsoft/msedge/microsoft-edge --profile-directory=Default --app-id=gmgnghphiockcigbjihhdnnmmcbdcjdf --app-url=https://app.simplenote.com/
+Icon=msedge-gmgnghphiockcigbjihhdnnmmcbdcjdf-Default
+StartupWMClass=crx__gmgnghphiockcigbjihhdnnmmcbdcjdf

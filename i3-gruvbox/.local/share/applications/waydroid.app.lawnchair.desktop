@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Lawnchair
+Exec=waydroid app launch app.lawnchair
+Icon=/home/manv/.local/share/waydroid/data/icons/app.lawnchair.png
+X-Purism-FormFactor=Workstation;Mobile;

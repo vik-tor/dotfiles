@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Drive
+Exec=waydroid app launch com.google.android.apps.docs
+Icon=/home/manv/.local/share/waydroid/data/icons/com.google.android.apps.docs.png
+X-Purism-FormFactor=Workstation;Mobile;

@@ -1,0 +1,11 @@
+TagLib: MPEG::Header::parse() -- MPEG header did not match MPEG synch.
+TagLib: MPEG::Properties::read() -- Could not find an MPEG frame in the stream.
+TagLib: MPEG::Header::parse() -- MPEG header did not match MPEG synch.
+TagLib: MPEG::Properties::read() -- Could not find an MPEG frame in the stream.
+writeCommonTags: couldn't write 'year' tag to 'Podcasts/Group Therapy Radio/Above & Beyond Group Therapy 350 Deep Warm Up Set, Prague (Full 4K Live Set).m4a' as it's not a positive integer
+writeCommonTags: couldn't write 'track' tag to 'Podcasts/Group Therapy Radio/Above & Beyond Group Therapy 350 Deep Warm Up Set, Prague (Full 4K Live Set).m4a' as it's not a positive integer
+writeCommonTags: couldn't write 'year' tag to 'Podcasts/Anjunabeats Worldwide/Anjunabeats Worldwide 640 with Tinlicker.m4a' as it's not a positive integer
+writeCommonTags: couldn't write 'track' tag to 'Podcasts/Anjunabeats Worldwide/Anjunabeats Worldwide 640 with Tinlicker.m4a' as it's not a positive integer
+writeCommonTags: couldn't write 'year' tag to 'Podcasts/Anjunabeats Worldwide/Anjunabeats Worldwide 640 with Tinlicker.m4a' as it's not a positive integer
+writeCommonTags: couldn't write 'year' tag to 'Podcasts/The Anjunadeep Edition/The Anjunadeep Edition 270 with Molø (Live at Explorations, June 2019).m4a' as it's not a positive integer
+writeCommonTags: couldn't write 'year' tag to 'Progressive/Lutrell/Luttrell & Ben Böhmer - Gibberish.m4a' as it's not a positive integer

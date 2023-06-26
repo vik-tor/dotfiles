@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Zero
+Exec=waydroid app launch com.zerofasting.zero
+Icon=/home/manv/.local/share/waydroid/data/icons/com.zerofasting.zero.png
+X-Purism-FormFactor=Workstation;Mobile;

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=WhatsApp
+Exec=waydroid app launch com.whatsapp
+Icon=/home/manv/.local/share/waydroid/data/icons/com.whatsapp.png
+X-Purism-FormFactor=Workstation;Mobile;

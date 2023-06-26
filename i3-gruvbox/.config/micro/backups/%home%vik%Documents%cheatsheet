@@ -1,0 +1,40 @@
+Ranger
+
+~Mount
+Enter in ranger :mount, than will be shown menu. In this menu you can press:
+
+j or arrow down or Ctrl+n to move selection down
+k or arrow up or Ctrl+p to move selection up
+Ctrl+g or Esc or q to quit
+g or r to refresh all partitions and drives
+m to mount selected partition
+u to unmount selected partition
+e to unmount all partitions of selected partition's drive
+p to power off selected the selected partition's drive (also called safely remove). It can be done only when all partitions of the drive are unmounted
+ENTER to open selected mountpoint in current tab of the ranger
+
+~Archives
+:extract [DIRECTORY]: extracting files to a current or specified directory (optional).
+:extract_raw [FLAGS]: extracting files with specific flags (optional).
+:extract_to_dirs [FLAGS]: extracting each archive to a separate directory. E.g.: 1.zip to dir 1, 2.zip to dir 2, etc.
+:compress [FLAGS] [FILENAME.EXT]: compressing selected/marked files/directories to an archive. If an archive filename is not specified, it will be named after a parent dir.
+
+map ex extract
+map ec compress
+-to rc.conf
+
+
+VS COde
+
+nstead of Ctrl+V: Select multiple lines and then Alt+Shift+I, it will put a cursor in each line, then you can do anything to all lines at once.
+
+Select text and then Ctrl+Shift+L - puts a cursor everywhere your selection is found. Ctrl+D does the same but adds one cursor at a time, if you only want the first two for example.
+
+Instead of Ctrl+O/Ctrl+I: Alt+Left/Alt+Right
+
+Instead of f/F/t/T: Select until pattern - Visual Studio Marketplace or Select By - Visual Studio Marketplace
+
+There are commands for gu/gU but they are not bounded by default, but also change-case - Visual Studio Marketplace
+
+Instead of viw/vi"/vi( - Alt+Shift+Right
+

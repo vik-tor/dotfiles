@@ -1,0 +1,69 @@
+configuration {
+	show-icons:								false;
+	display-drun: 						"USSD";
+	drun-display-format:      "{icon} {name}";
+	location: 0;
+}
+
+@import "gruvbox.rasi"
+@import "font.rasi"
+
+* {
+    background-color:       @BG;
+    text-color:             @FG;
+}
+
+window {
+	transparency:             "real";
+	background-color:         @BG;
+	text-color:               @FG;
+  width:      	        		240px;
+  padding:                	10px;
+  border:		            		0px;
+  border-radius:          	8px;
+  border-color:           	@BDR;
+  location:               	0;
+  x-offset:               	0;
+  y-offset:               	0;
+}
+
+textbox-prompt-colon {
+		enabled: 												false;
+    expand: 			            			false;
+    str: 			                			"";
+    background-color:               @TR;
+    text-color:                     @FGA;
+    padding:                        8px 10px 8px 30px;
+}
+
+prompt {
+    enabled: 			            			false;
+    padding: 			            			8px;
+    background-color: 		       		@TR;
+    text-color: 		            		@FG;
+}
+
+entry {
+    background-color:               @TR;
+    text-color:                     @FG;
+    placeholder-color:              @FGA;
+    expand:                         true;
+    horizontal-align:               0;
+    placeholder:                    "...";
+    blink:                          true;
+    border:                  	    	0px;
+    padding:                        8px;
+}
+
+inputbar {
+		children: 		                	[ entry ];
+    background-color:               @TR;
+    text-color:                     @FG;
+    expand:                         false;
+    border:                  	    	0;
+    border-radius:                  10px;
+    border-color:                   @BDA;
+    margin:                         0px 0px 0px 0px;
+    padding:                        2px 8px 0px;
+    position:                       center;
+}

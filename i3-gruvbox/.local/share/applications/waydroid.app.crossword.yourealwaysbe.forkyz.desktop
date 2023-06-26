@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Forkyz
+Exec=waydroid app launch app.crossword.yourealwaysbe.forkyz
+Icon=/home/manv/.local/share/waydroid/data/icons/app.crossword.yourealwaysbe.forkyz.png
+X-Purism-FormFactor=Workstation;Mobile;

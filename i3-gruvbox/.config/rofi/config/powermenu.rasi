@@ -1,0 +1,144 @@
+configuration {
+    show-icons:                     true;
+    display-drun: 		            	"";
+    drun-display-format:            "{icon} {name}";
+    disable-history:                false;
+    click-to-exit: 		            	true;
+    location:                       0;
+}
+
+@import "font.rasi"
+@import "gruvbox.rasi"
+
+/* Line Responsible For Button Layouts */
+/* BUTTON = TRUE */
+
+window {
+    transparency:                   "real";
+    background-color:               @BG;
+    text-color:                     @FG;
+    border:                  	    	0px;
+    border-color:                   @BG;
+    width:                          360px;
+    padding: 												0px;
+    x-offset:                       0;
+    y-offset:                       0;
+}
+
+textbox-prompt-colon {
+		enabled: 												true;
+    expand: 			            			false;
+    str: 			                			" ";
+    border-radius:                  100%;
+    background-color:               @TR;
+    text-color:                     @FG;
+    font:			                			"FiraCode Nerd Font 9";
+    horizontal-align:               0.5;
+    vertical-align:               	0.5;
+    padding:                        10px 10px 2px 20px;
+}
+
+prompt {
+    enabled: 			            			true;
+    padding: 			            			10px 8px 2px 4px;
+    background-color: 		       		@TR;
+    text-color: 		            		@FG;
+    font:			                			"Fira Sans Medium 8";
+    horizontal-align:               0.5;
+    vertical-align:               	0.5;
+}
+
+inputbar {
+    children: 		                	[ textbox-prompt-colon, prompt ];
+    background-color:               @TR;
+    text-color:                     @FG;
+    expand:                         false;
+    border:                  	    	0px 0px 0px 0px;
+    border-radius:                  0px;
+    border-color:                   @BDR;
+    margin:                         0px 0px 0px 0px;
+    padding:                        0px 0px 10px;
+    position:                       center;
+}
+
+listview {
+    background-color:               @TR;
+    padding:												8px 8px;
+    border-radius:									10px;
+    columns:                        2;
+    lines:			                		2;
+    spacing:                        8px;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         vertical;
+}
+
+mainbox {
+    background-color:               @TR;
+    children:                       [ listview, inputbar ];
+    spacing:                        8px;
+    padding:                        10px;
+    border-radius:                  6px;
+}
+
+element {
+    background-color:               @TR;
+    text-color:                     @FG;
+    orientation:                    vertical;
+    border:													1px;
+    border-color:										@BDR;
+    border-radius:                  6px;
+    padding:                        36px 16px;
+}
+
+element-icon {
+    background-color: 		        	inherit;
+    text-color:       		        	inherit;
+    font:			                			"FiraCode Nerd Font 26";
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    size:                           0px;
+    border:                         0px;
+}
+
+element-text {
+    background-color: 		        	@TR;
+    text-color:       		        	inherit;
+    font:			                			"FiraCode Nerd Font 22";
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+
+    
+    margin:                         0px 0px 0px 0px;
+}
+
+element selected {
+    background-color:               @BDR;
+    text-color:                     @FGA;
+    border:                  	    	0px 0px 0px 0px;
+    border-radius:                  6px;
+    border-color:                   @BDR;
+}
+
+element.active,
+element.selected.urgent {
+  background-color: @ON;
+  text-color: @BG;
+  border-color: @ON;
+}
+
+element.selected.urgent {
+  border-color: @BDR;
+}
+
+element.urgent,
+element.selected.active {
+  background-color: @OFF;
+  text-color: @BG;
+  border-color: @OFF;
+}
+
+element.selected.active {
+  border-color: @BDR;
+}

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Clock
+Exec=waydroid app launch com.android.deskclock
+Icon=/home/manv/.local/share/waydroid/data/icons/com.android.deskclock.png
+X-Purism-FormFactor=Workstation;Mobile;

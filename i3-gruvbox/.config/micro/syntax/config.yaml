@@ -1,0 +1,35 @@
+filetype: ncmpcpp
+
+detect:
+  filename: "ncmpcpp/config"
+
+rules:
+  - constant.number: "\\b[0-9]+\\b"
+  - special: "-[Ldefgruwx]\\b"
+  - special: "-(eq|ne|gt|lt|ge|le|s|n|z)\\b"
+  - special: "--[a-z-]+"
+  - special: "\\ -[a-z]+"
+  
+  ## Variables
+  - constant: "\\%\\{?[0-9A-Za-z_!@#$*?-]+\\}?" #(i)
+  - identifier: "\\$\\{?[0-9A-Za-z_!@#$*?-]+\\}?" #(i)
+
+  - symbol.brackets: "(\\{|\\})"
+  - symbol.brackets: "(\\(|\\))"
+  - symbol.brackets: "(\\[|\\])"
+    
+  - constant: "\\b(yes|no)\\b"
+  - constant.string: 
+      start: "\""
+      end: "\""
+      skip: "\\\\."
+      rules:
+        - constant.specialChar: "\\\\."
+  - constant.string:
+      start: "'"
+      end: "'"
+      skip: "\\\\."
+      rules:
+          - constant.specialChar: "\\\\."
+    
+  - comment: "(^|[[:space:]])#.*$"

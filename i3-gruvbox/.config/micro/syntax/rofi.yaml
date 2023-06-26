@@ -1,0 +1,46 @@
+filetype: rasi
+
+detect:
+  filename: "\\.rasi$"
+
+rules:
+  - statement: "@import"
+  - type:
+      start: "\\["
+      end: "\\]"
+      rules: []
+  
+  # Brackets
+  - symbol.brackets: "(\\{|\\})"
+  - symbol.brackets: "(\\(|\\))"
+  - symbol.brackets: "(\\[|\\])"
+  - identifier: "@\\{?[0-9A-Za-z_!@#$*?-]+\\}?"
+  
+  - constant.bool: "\\b(true|false|nil)\\b"
+  
+  # Strings
+  - constant.string: "(#[0-9a-fA-F]*)"
+  - constant.string:
+      start: "\""
+      end: "\""
+      skip: "\\\\."
+      rules:
+          - constant.specialChar: "\\\\."
+  - constant.string:
+       start: "'"
+       end: "'"
+       skip: "\\\\."
+       rules:
+           - constant.specialChar: "-"
+           
+  # Comments & TODOs
+  - comment:
+      start: "\\/\\*"
+      end: "\\*\\/"
+      rules:
+          - todo: "(TODO|XXX|FIXME):?"
+  - comment:
+            start: "\\//\\*"
+            end: "$"
+            rules:
+              - todo: "(TODO|XXX|FIXME):?"

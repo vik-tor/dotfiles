@@ -1,0 +1,38 @@
+filetype: i3
+
+detect:
+  filename: "i3/config"
+
+rules:
+  # - constant.number: "\\b[0-9]+\\b"
+  - statement: "\\b(case|do|done|elif|else|esac|exit|fi|for|function|if|in|local|read|return|select|shift|then|time|until|while)\\b"
+  - special: "-[Ldefgruwx]\\b"
+  - special: "-(eq|ne|gt|lt|ge|le|s|n|z)\\b"
+  - special: "--[a-z-]+"
+  - special: "\\ -[a-z]+"
+  - statement: "\\b(bar|bindsym|mode|set|set(_from_resource)?)\\b"
+  - type: "\\b(exec(_always)?)\\b"
+  - statement: "\\b(cat|cd|chmod|chown|cp|echo|env|export|grep|install|let|ln|make|mkdir|mv|rm|sed|set|tar|touch|umask|unset)\\b"
+   ## Common linux commands
+  - statement: "\\b((g|ig)?awk|find|\\w{0,4}grep|kill|killall|\\w{0,4}less|make|pkill|sed|tar)\\b"
+    
+  - constant: "^\\s+[0-9A-Z_]+\\s+\\(\\)"
+  
+  ## Variables
+  - identifier: "\\$\\{?[0-9A-Za-z_!@#$*?-]+\\}?" #(i)
+
+  - constant: "\\b(true|false)\\b"
+  - constant.string: 
+      start: "\""
+      end: "\""
+      skip: "\\\\."
+      rules:
+        - constant.specialChar: "\\\\."
+  - constant.string:
+      start: "'"
+      end: "'"
+      skip: "\\\\."
+      rules:
+          - constant.specialChar: "\\\\."
+    
+  - comment: "(^|[[:space:]])#[[:space:]].*$"

@@ -1,0 +1,64 @@
+#!/usr/bin/bash
+
+icon_path=/home/vik/.local/share/icons/Tela-orange-dark/16/actions/
+notify_id=5235
+card=2
+control=Speaker
+
+function get_volume {
+    #pacmd list-sinks | awk '/\tvolume:/ { print $5 }' | tail -n+$((sink_nr+1)) | head -n1 | cut -d '%' -f 1
+    amixer -c $card get $control | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1
+}
+
+function get_volume_icon {
+    if [ "$1" -lt 34 ]
+    then
+        echo -n "audio-volume-low.svg"
+    elif [ "$1" -lt 67 ]
+    then
+        echo -n "audio-volume-medium.svg"
+    elif [ "$1" -le 100 ]
+    then
+        echo -n "audio-volume-high.svg"
+    else
+        echo -n "audio-volume-overamplified-symbolic.symbolic.png"
+    fi
+}
+
+function volume_notification {
+    volume=`get_volume`
+    vol_icon=`get_volume_icon $volume`
+    bar=$(seq -s "━━" $(($volume / 5)) | sed 's/[0-9]//g')
+    dunstify -a Volume -r $notify_id -u low -i $icon_path$vol_icon $bar
+
+    # Play the volume changed sound
+    canberra-gtk-play -i audio-volume-change -d "volumeChange"
+}
+
+function mute_notification {
+    muted=$(amixer -c 2 get Speaker | tail -2 | grep -c '\[on\]')
+    if [ $muted == 0 ]
+    then
+        dunstify -a Volume -r $notify_id -u low -i ${icon_path}audio-volume-muted.svg mute
+    else
+        dunstify -a Volume -r $notify_id -u low -i ${icon_path}`get_volume_icon $(get_volume)` unmute
+    fi
+}
+
+case $1 in
+    up)
+        amixer -c 2 sset $control 5%+
+        volume_notification
+        ;;
+    down)
+        amixer -c 2 sset $control 5%-
+        volume_notification
+	    ;;
+    mute)
+        amixer -c 2 sset $control toggle
+        mute_notification
+        ;;
+    *)
+        echo "Usage: $0 up | down | mute"
+        ;;
+esac

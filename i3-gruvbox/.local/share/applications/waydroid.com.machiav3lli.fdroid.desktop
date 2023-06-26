@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Neo Store
+Exec=waydroid app launch com.machiav3lli.fdroid
+Icon=/home/manv/.local/share/waydroid/data/icons/com.machiav3lli.fdroid.png
+X-Purism-FormFactor=Workstation;Mobile;

@@ -1,0 +1,125 @@
+#!/bin/bash
+index=$(mmcli -L | awk '{print $1}' | awk -F / '{print $6}')
+
+initiate="  USSD request"
+respond="  USSD response"
+sms="  Messages"
+
+notify_id=5232
+
+#initiate=""
+#respond="ﴭ" 說
+#cancel=""
+#sms=""
+
+theme_dir="$HOME/.config/rofi/config"
+rofi_command="rofi -theme $theme_dir/modem.rasi"
+
+messages=()
+indexes=()
+
+get_sms_list() {
+	list=$(mmcli -m $index --messaging-list-sms)
+			
+	for item in $list
+	do
+		if [[ $item == "(received)" ]]; then
+			echo "Discarded" > /dev/null
+		else
+			sms_index=$(echo $item | grep SMS | cut -d '/' -f 6)
+			number="$(mmcli -m $index -s $sms_index -K | grep -E 'number' | awk -F ':' '{print $2}')"
+			text="$(mmcli -m $index -s $sms_index -K | grep -E 'text' | awk -F ':' '{print $2}' | cut -c 2-)"
+			when=$(mmcli -m $index -s $sms_index -K | grep 'properties.timestamp' | awk -F ':' '{print $2$3$4}' | cut -c 2-)
+			message=$(echo -e "From: $number\r\"$text\"\nReceived: $when\n ~")
+			messages+=("$message")
+			indexes+=($sms_index)
+		fi
+	done
+}
+
+list_sms() {
+	echo -en "${messages[@]}" | rofi -theme "$theme_dir/messages.rasi" -sep '~' -dmenu -e -i -format i
+}
+
+show_sms () {
+	get_sms_list
+	
+	sms_id=$(list_sms &)
+	sms=${messages[sms_id]}
+	sms_idx=${indexes[sms_id]}
+
+	delete=$(echo $(dunstify -a Modem -r $notify_id -u low -A "delete,Delete" -i messaging-app-symbolic "SMS Message" "$sms"))
+	if [[ $delete == "delete" ]]; then
+		fb=$(mmcli -m $index --messaging-delete-sms $sms_idx)
+		dunstify -a Modem -r $notify_id -u low -i messaging-app-symbolic "SMS Message" "$fb"
+	fi
+	exit 0
+
+	# echo -en "${messages[sms_id]}" | rofi -theme "$theme_dir/messages.rasi" -sep '~' -dmenu  -i -no-fixed-num-lines -p "Message"
+}
+
+initiate() {
+	check_bundle_balance="*544*13#"
+	check_airtime_balance="*144#"
+	friday_data="*544*0*4*1#"
+	top_up_100="*544*4*1*100*0710801166#"
+	top_up_60="*544*4*1*60*0710801166#"
+	top_up_20="*544*4*1*20*0710801166#"
+	daily_200mb="*544*2*1*4*2*1#"
+	daily_700mb_nt="*544*2*1*2*2*1#"
+	daily_2gb="*544*2*1*1*2*1#"
+	daily_700mb="*544*2*1*5*2*1#"
+
+	quick_actions=($check_bundle_balance $top_up_20 $top_up_60 $top_up_100 $daily_200mb $daily_700mb $daily_700mb_nt $daily_2gb $friday_data)
+
+	mmcli -m $index --3gpp-ussd-cancel
+
+	ussd_options="Enter USSD\nCheck bundle balance\nTop up - 20\nTop up - 60\nTop up - 100\nDaily 200MB\nDaily 700MB\nDaily 700MB + Night\nDaily 2GB + Night\nWeekend 5GB"
+
+	ussd_option="$(echo -e "$ussd_options" | rofi -dmenu -theme "$theme_dir/ussd.rasi" -format i -no-custom)"
+	
+	if [[ $ussd_option == 0 ]]; then
+		ussd=$(rofi -dmenu -i -no-fixed-num-lines -p "Enter USSD:"  -theme "$theme_dir/confirm.rasi")
+		if [[ $ussd == "" ]]; then
+			exit 0
+		else
+			option=$(echo -en "$(mmcli -m $index --3gpp-ussd-initiate=$ussd -K)")
+			dunstify -a Modem -r $notify_id -u low -i auth-sim "USSD response" "$option"
+		fi
+	else
+		res=$(echo $(mmcli -m $index --3gpp-ussd-initiate=${quick_actions[ussd_option-1]} -K))
+		dunstify -a Modem -r $notify_id -u low -i auth-sim "USSD response" "$res"
+	fi
+}
+
+respond() {
+	response=$(rofi -dmenu -i -no-fixed-num-lines -theme "$theme_dir/confirm.rasi")
+	if [[ $response == "" ]]
+		then
+		exit 0
+	else
+		rs=$(echo -en "$(mmcli -m $index --3gpp-ussd-respond=$response -K)")
+		dunstify -a Modem -r $notify_id -u low -i auth-sim "USSD response" "$rs"
+	fi
+}
+
+cancel() {
+	cancel=$(echo -en $(mmcli -m $index --3gpp-ussd-cancel))
+	dunstify -a Modem -r $notify_id -u low -i call-stop "Cancel session" "$cancel"
+	exit 0
+}
+
+menu_options="$initiate\n$respond\n$sms"
+
+chosen="$(echo -e "$menu_options" | $rofi_command -p "Modem Menu" -dmenu --selected-row 0)"
+case $chosen in
+	$initiate)	
+		initiate
+		;;
+	$respond)	
+		respond
+		;;
+	$sms)
+		show_sms
+		;;
+esac

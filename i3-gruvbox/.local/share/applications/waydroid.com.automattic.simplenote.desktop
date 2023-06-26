@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Simplenote
+Exec=waydroid app launch com.automattic.simplenote
+Icon=/home/manv/.local/share/waydroid/data/icons/com.automattic.simplenote.png
+X-Purism-FormFactor=Workstation;Mobile;

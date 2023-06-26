@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Keep Notes
+Exec=waydroid app launch com.google.android.keep
+Icon=/home/manv/.local/share/waydroid/data/icons/com.google.android.keep.png
+X-Purism-FormFactor=Workstation;Mobile;

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Contacts
+Exec=waydroid app launch com.android.contacts
+Icon=/home/manv/.local/share/waydroid/data/icons/com.android.contacts.png
+X-Purism-FormFactor=Workstation;Mobile;

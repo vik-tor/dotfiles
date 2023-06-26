@@ -1,0 +1,19 @@
+colors:
+  body: none
+  date: none
+  tags: none
+  title: cyan
+default_hour: 9
+default_minute: null
+editor: micro
+encrypt: false
+highlight: true
+indent_character: '|'
+journals:
+  default:
+    journal: /home/manv/.local/share/jrnl/journal.txt
+linewrap: 79
+tagsymbols: '#@'
+template: false
+timeformat: '%Y-%m-%d %H:%M:%S'
+version: v4.0

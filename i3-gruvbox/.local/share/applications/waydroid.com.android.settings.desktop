@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Settings
+Exec=waydroid app launch com.android.settings
+Icon=/home/manv/.local/share/waydroid/data/icons/com.android.settings.png
+X-Purism-FormFactor=Workstation;Mobile;

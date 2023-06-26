@@ -1,0 +1,84 @@
+#
+# ncmpcpp config
+#
+
+### Directories ###
+ncmpcpp_directory = ~/.config/ncmpcpp
+lyrics_directory  = ~/.config/ncmpcpp/lyrics
+mpd_music_dir     = ~/Music
+
+### Behaviour ###
+message_delay_time = 1
+ignore_leading_the = no
+allow_for_physical_item_deletion = yes
+
+### Integration with external programs ###
+execute_on_song_change = "bash ~/.config/ncmpcpp/music-notify.sh"
+# execute_on_song_change = "bash ~/.config/ncmpcpp/cover.sh extract"
+external_editor = "micro"
+use_console_editor = yes
+mouse_support = yes
+mouse_list_scroll_whole_page = no
+lines_scrolled = "2"
+
+# Visualizer
+visualizer_data_source = "/tmp/mpd.fifo"
+visualizer_output_name = "my_fifo" 
+visualizer_in_stereo = no
+# visualizer_type = "ellipse" spectrum/ellipse/wave_filled/wave
+visualizer_type = "ellipse"
+# visualizer_look = "●▮"
+visualizer_look = "●▝"
+# visualizer_look = "●─"
+# visualizer_color = 41, 83, 119, 155, 185, 215, 209, 203, 197, 16
+visualizer_color = "yellow"
+
+# Playlist
+# song_columns_list_format = (3f)[white]{n} (40)[default]{t|f} (25)[red]{a} (30)[cyan]{b} (4f)[white]{l}
+song_columns_list_format = (6f)[white]{NE} (25)[blue]{a} (50)[yellow]{t|f:Title} (20)[red]{b} (8f)[]{l}
+# $L(9)[black]{l} (20)[red]{a} (30)[blue]{b} $L(20)[default]{t}
+now_playing_prefix = "$b"
+now_playing_suffix = "$/b"
+playlist_display_mode = "classic" (classic/columns)
+playlist_shorten_total_times = yes
+autocenter_mode = no
+centered_cursor = no
+cyclic_scrolling = no
+# song_list_format = {$8$9}{[%l] >> }{%t }$R{%a - %b}
+song_list_format = {$4 %l $9}$1 $9{$2 %a $9}$1 $9{$0 %t } $R{$9$1 $9$3 %b $9}$1 $9{$6 %n$9}|{$6   $9}
+# "$0$8$8%l$0$8 $1¦$7 $7%a$7 $1¦$7 $6%t$1 $R $1%b$1"
+song_library_format = {%n > }{%t}|{%f}
+
+# Bars
+song_status_format = $aqqu$/a{$3 %a $9}{{$b %t $/b}{$2$b (%b) $/b$9}}|{$b %f $/b}$atqq$/a
+# $8%t $1• $2%a $1•{ $5%b $1• }$7%y$1
+# progressbar_look = "||]"
+# progressbar_look = "──-"
+progressbar_look = "-|-"
+#progressbar_look = "-+-"
+titles_visibility = no
+header_visibility = yes
+statusbar_visibility = yes
+
+# Browser
+browser_playlist_prefix = "$2plist »$9 "
+browser_display_mode = "columns" (classic/columns)
+
+# Colors
+discard_colors_if_item_is_selected = yes
+header_window_color = "white"
+volume_color = "blue"
+state_line_color = "white"
+state_flags_color = "green"
+main_window_color = "default"
+color1 = "default"
+color2 = "green"
+progressbar_color = "white"
+progressbar_elapsed_color = "default"
+statusbar_color = "default"
+
+# Others
+song_window_title_format = {%a - }{%t}{ [%b{ Disc %d}]}|{%f}
+search_engine_display_mode = "columns" (classic/columns)
+follow_now_playing_lyrics = yes
+connected_message_on_startup = no

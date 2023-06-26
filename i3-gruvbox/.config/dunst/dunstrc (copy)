@@ -1,0 +1,106 @@
+[global]
+	### Text ###
+	
+  font = "FiraCode Nerd Font Medium 9"
+  line_height = 0.5
+  markup = full
+  format = "<i>%a</i>\n<b>%s</b>\n%b\n"
+  alignment = left
+  show_age_threshold = 300
+  word_wrap = yes
+  stack_duplicates = yes
+  show_indicators = yes
+
+  #### Icons ####
+  
+  icon_position = left
+  icon_path = /home/vik/.local/share/icons/Tela-orange-dark/16/actions/
+  max_icon_size = 64
+
+  #### Display ####
+  
+  monitor = 0
+  follow = mouse
+  geometry = "350x5-30+20"
+	indicate_hidden = yes
+	shrink = no
+	transparency = 20
+  notification_height = 0
+  separator_height = 2
+  padding = 12
+	frame_width = 1
+	frame_color = "#28282890"
+  horizontal_padding = 14
+	# separator_color = frame
+	separator_color = "#45858800"
+	sort = yes
+	idle_threshold = 120
+
+	### History ###
+	
+	sticky_history = yes
+	history_length = 20
+
+	### Misc/Advanced ###
+
+	# Browser for opening urls in context menu.
+	browser = /usr/bin/xdg-open
+
+	# Define the title of the windows spawned by dunst
+	title = Dunst
+	
+	# Define the class of the windows spawned by dunst
+	class = Dunst
+
+	startup_notification = false
+
+[shortcuts]
+
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+shift+grave
+    context = ctrl+shift+period
+
+[urgency_low]
+
+    background = "#3c383690"
+    foreground = "#fbf1c7"
+    timeout = 5
+
+[urgency_normal]
+
+    background = "#3c383690"
+    foreground = "#fbf1c7"
+    timeout = 20
+
+[urgency_critical]
+
+    background = "#3c383690"
+    foreground = "#fbf1c7"
+    timeout = 0
+
+# [base16_low]
+    # msg_urgency = low
+    # background = "#3c3836"
+    # foreground = "#665c54"
+# 
+# [base16_normal]
+    # msg_urgency = normal
+    # background = "#504945"
+    # foreground = "#d5c4a1"
+# 
+# [base16_critical]
+    # msg_urgency = critical
+    # background = "#fb4934"
+    # foreground = "#ebdbb2"
+
+#[history-ignore]
+#    # This notification will not be saved in history
+#    summary = "foobar"
+#    history_ignore = yes
+
+[volume]
+   appname = Volume
+   summary = "━━*"
+   urgency = low
+   history_ignore = yes

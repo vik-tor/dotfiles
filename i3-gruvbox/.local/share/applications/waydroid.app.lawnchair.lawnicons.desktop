@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Rkicons
+Exec=waydroid app launch app.lawnchair.lawnicons
+Icon=/home/manv/.local/share/waydroid/data/icons/app.lawnchair.lawnicons.png
+X-Purism-FormFactor=Workstation;Mobile;

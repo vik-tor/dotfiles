@@ -1,0 +1,196 @@
+icons_format = " <span font_family='Fantasque Sans Mono Nerd Font'>{icon}</span> "
+error_format = "$short_error_message|X"
+
+[theme]
+theme = "semi-native"
+[theme.overrides]
+# idle_bg = "#3c3836cc"
+#separator_bg = "#313244"
+separator_fg = "#928374"
+good_fg = "#b8bb26"
+idle_fg = "#d5c4a1"
+#alternating_tint_fg = "#a89984"
+#separator = " | "
+#end_separator = "||"
+
+[icons]
+icons = "material-nf"
+
+[[block]]
+block = "focused_window"
+[block.format]
+full = " $title.str(max_w:72) | b50-labs"
+short = " $title.str(max_w:50) | b50-labs"
+[block.theme_overrides]
+idle_fg = "#fabd2f"
+
+[[block]]
+block = "custom"
+command = "sh ~/.local/bin/wakatime"
+#command = "echo '{\"icon\":\"weather_thunder\",\"state\":\"Critical\", \"text\": \"Danger!\"}'"
+#json = true
+interval = 60
+hide_when_empty = true
+icons_format = "\U000F092F"
+[block.theme_overrides]
+idle_fg = "#ebdbb2"
+
+[[block]]
+block = "docker"
+interval = 2
+format = " $icon $running/$total "
+[block.theme_overrides]
+idle_fg = "#ebdbb2"
+
+[[block]]
+block = "cpu"
+interval = 1
+format = " $icon $utilization "
+format_alt = " $icon $frequency{ $boost|} "
+
+[[block]]
+block = "memory"
+format = " $icon $mem_used.eng(w:1) "
+format_alt = " $icon_swap $swap_free.eng(w:3,u:B,p:M)/$swap_total.eng(w:3,u:B,p:M)($swap_used_percents.eng(w:2)) "
+
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "available"
+interval = 200
+warning = 20.0
+alert = 10.0
+format = " $icon $available "
+format_alt = " $icon $available / $total "
+[[block.click]]
+button = "right"
+update = true
+
+[[block]]
+block = "tea_timer"
+format = " $icon {$minutes:$seconds |}"
+done_cmd = "dunstify -a Timer -r 2535 -u high -i caffeine-cup-full \"Timer finished\""
+
+[[block]]
+block = "pomodoro"
+notify_cmd = "dunstify -a Pomodoro -r 2536 -u high -i caffeine-cup-full '{msg}'"
+blocking_cmd = true
+
+[[block]]
+block = "music"
+format = " $icon {$combo.str(max_w:20,rot_interval:0.5) $play $next |}"
+#interface_name_exclude = [".*kdeconnect.*", "mpd"]
+player = "mpd"
+separator = " - "
+[[block.click]]
+button = "left"
+action = "play_pause"
+[block.theme_overrides]
+info_fg = "#fabd2f"
+
+[[block]]
+block = "sound"
+max_vol = 100
+[block.theme_overrides]
+idle_fg = "#fbf1c7"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "backlight"
+device = "intel_backlight"
+[block.theme_overrides]
+idle_fg = "#fbf1c7"
+
+[[block]]
+block = "battery"
+format = " $icon $percentage {($time) | ($power)}"
+full_format = " $icon$percentage "
+missing_format = " "
+device = "BAT1"
+driver = "sysfs"
+
+[[block]]
+block = "bluetooth"
+mac = "FC:A8:9A:87:B5:39"
+#disconnected_format = " $icon "
+disconnected_format = ""
+format = " $icon "
+[block.battery_state]
+"0..20" = "critical"
+"21..70" = "warning"
+"71..100" = "good"
+
+# [[block]]
+# block = "net"
+# device = "^wlan0$"
+# missing_format = ""
+# format = " $icon  {$ssid ($signal_strength) |Wired connection $device} "
+# #format_alt = " $icon  {$ssid ($signal_strength$frequency)|Wired } - $device "
+# format_alt = " $icon  {$frequency (\uea9d $speed_down  \ueaa0 $speed_up)|Wired } - $device "
+# inactive_format = ""
+# 
+# [[block]]
+# block = "net"
+# device = "^wwp0s20u1i1$"
+# format = " $icon  {$device} "
+# missing_format = ""
+# inactive_format = ""
+# 
+# 
+# [[block]]
+# block = "net"
+# device = "^enp8s0$"
+# format = " $icon  {$device} "
+# missing_format = ""
+# inactive_format = ""
+
+[[block]]
+block = "time"
+interval = 60
+[block.format]
+#full = " $icon  $timestamp.datetime(f:'%a, %b %d - %R', l:en_GB) "
+full = " $icon  $timestamp.datetime(f:'%a %d - %R', l:en_GB) "
+short = " $icon  $timestamp.datetime(f:%R) "
+[block.theme_overrides]
+idle_fg = "#fabd2f"
+
+[[block]]
+block = "menu"
+text = " |[ \uf011 ]| "
+[[block.items]]
+# display = " -&gt; Sleep &lt;-  "
+display = " {| Sleep |}  "
+cmd = "systemctl suspend"
+confirm_msg = " -{ You sure? }- "
+[[block.items]]
+display = " {| Power Off |} "
+cmd = "poweroff"
+confirm_msg = " -{ Really power off? }- "
+[[block.items]]
+display = " {| Reboot |} "
+cmd = "reboot"
+confirm_msg = " -{ Want to reboot? }- "
+
+#[[block]]
+#block = "notify"
+#[block.theme_overrides]
+#idle_fg = "#cdd6f4"
+
+# [[block]]
+# block = "custom"
+# command = "sed 's/  //' <(curl 'https://wttr.in/?format=1' -s)"
+# interval = 600
+# [block.theme_overrides]
+# idle_fg = "#94e2d5"
+
+#[[block]]
+#block = "custom"
+#command = "echo '{\"text\": \"\uf03e\"}'"
+#json = true
+#[block.theme_overrides]
+#idle_fg = "#a89984"
+#[[block.click]]
+#button = "left"
+#cmd = "feh --recursive --bg-fill --randomize ~/Pictures/Backgrounds"

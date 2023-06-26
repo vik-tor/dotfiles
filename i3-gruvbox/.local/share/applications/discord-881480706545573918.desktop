@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Game 881480706545573918
+Exec=/usr/share/harmonoid/harmonoid %u
+Type=Application
+NoDisplay=true
+Categories=Discord;Games;
+MimeType=x-scheme-handler/discord-881480706545573918;

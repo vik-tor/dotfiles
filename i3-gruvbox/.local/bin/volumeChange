@@ -1,0 +1,22 @@
+#!/bin/bash
+# volumeChange
+
+# Unique message id
+msgId="993452"
+
+# Change volume (pulseaudio)
+pactl set-sink-volume @DEFAULT_SINK@ "$@"
+
+#Check current volume and mute status
+volume="$(pacmd list-sinks|grep -A 15 '* index'| awk '/volume: front/{ print $5 }' | sed 's/[%|,]//g')"
+mute="$(pacmd list-sinks|grep -A 15 '* index'|awk '/muted:/{ print $2 }')"
+
+if [[ $volume == 0 || "$mute" == "off" ]];
+then
+	# Show sound muted alert
+	dunstify -a "volumeChange" -u low -i audio-volume-muted -r "$msgId" \
+	-h int:value:"$volume" "Volume: ${volume}%"
+fi
+
+# Play the volume changed sound
+canberra-gtk-play -i audio-volume-change -d "volumeChange"

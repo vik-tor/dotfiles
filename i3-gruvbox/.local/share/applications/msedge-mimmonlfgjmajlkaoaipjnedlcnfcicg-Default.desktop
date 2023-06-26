@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Fastient
+Exec=/opt/microsoft/msedge/microsoft-edge --profile-directory=Default --app-id=mimmonlfgjmajlkaoaipjnedlcnfcicg --app-url=https://fastient.com/
+Icon=msedge-mimmonlfgjmajlkaoaipjnedlcnfcicg-Default
+StartupWMClass=crx__mimmonlfgjmajlkaoaipjnedlcnfcicg

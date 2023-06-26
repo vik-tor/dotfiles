@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Calculator
+Exec=waydroid app launch com.android.calculator2
+Icon=/home/manv/.local/share/waydroid/data/icons/com.android.calculator2.png
+X-Purism-FormFactor=Workstation;Mobile;

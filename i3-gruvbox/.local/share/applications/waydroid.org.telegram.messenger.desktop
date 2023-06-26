@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Telegram
+Exec=waydroid app launch org.telegram.messenger
+Icon=/home/manv/.local/share/waydroid/data/icons/org.telegram.messenger.png
+X-Purism-FormFactor=Workstation;Mobile;

@@ -1,0 +1,119 @@
+[global]
+	#### Display ####
+	monitor = 0
+	follow = mouse
+
+	### Geometry ###
+
+	#"380x8-5+15"
+	# dynamic width from 0 to 300
+	# width = (0, 300)
+	# constant width of 300
+	width = 300
+
+  origin = bottom-right
+
+  # Offset from the origin
+  offset = 10x30
+
+	### Text ###
+
+  font = "Fira Sans Medium 8"
+  line_height = 1
+  markup = full
+  format = "<small><tt><b><i>%a</i></b></tt></small>\n<b>%s</b>\n%b\n%p\n"
+  alignment = left
+  vertical_alignment = top
+  show_age_threshold = 300
+  word_wrap = yes
+  stack_duplicates = yes
+  show_indicators = yes
+
+  #### Icons ####
+
+  icon_position = left
+  icon_theme = "Fluent-orange-dark"
+  icon_path = /usr/share/icons/Fluent-orange-dark/22/actions/:/usr/share/icons/Fluent-orange-dark/symbolic/actions/:/usr/share/icons/Fluent-orange-dark/symbolic/apps/:/usr/share/icons/Fluent-orange-dark/22/devices/:/usr/share/icons/Fluent-orange-dark/22/places/:/usr/share/icons/Fluent-orange-dark/22/panel/:/usr/share/icons/Fluent-orange-dark/22/mimetypes/
+  max_icon_size = 28
+
+
+	indicate_hidden = yes
+	shrink = no
+	transparency = 25
+  separator_height = 2
+  padding = 16
+	frame_width = 2
+	frame_color = "#FE80192F"
+  horizontal_padding = 14
+	separator_color = frame
+	gap_size = 0
+	sort = yes
+	idle_threshold = 120
+
+	progress_bar = true
+	progress_bar_height = 10
+	progress_bar_frame_width = 1
+	progress_bar_min_width = 150
+	progress_bar_max_width = 300
+
+	### History ###
+
+	sticky_history = yes
+	history_length = 20
+
+	### Misc/Advanced ###
+
+	# Browser for opening urls in context menu.
+	browser = /usr/bin/xdg-open
+
+	dmenu = rofi -dmenu -p dunst
+
+	# Define the title of the windows spawned by dunst
+	title = Dunst
+
+	# Define the class of the windows spawned by dunst
+	class = Dunst
+	
+	always_run_script = true
+	corner_radius = 8
+
+	### Mouse
+	mouse_left_click = do_action, close_current
+	mouse_middle_click = context, close_current
+	mouse_right_click = close_all
+
+[urgency_low]
+	background = "#1D2021CC"
+	foreground = "#EBDBB2"
+
+[urgency_normal]
+	background = "#1D2021CC"
+	foreground = "#EBDBD2"
+
+[urgency_critical]
+	background = "#282828CC"
+	foreground = "#FBF1C7"
+	frame_color = "#FABD2F88"
+
+#[history-ignore]
+	#    # This notification will not be saved in history
+	#    summary = "foobar"
+	#    history_ignore = yes
+
+[volume]
+	appname = Volume
+	summary = "━━*"
+	urgency = low
+	history_ignore = yes
+
+[pomodoro_over]
+	summary = "Pomodoro over"
+	script = /home/manv/.local/bin/notisound
+
+[break_over]
+	summary = "Break over"
+	script = /home/manv/.local/bin/pomodoro_sound
+
+[timer_done]
+	summary = "*Timer finished*"
+	script = /home/manv/.local/bin/timer_sound

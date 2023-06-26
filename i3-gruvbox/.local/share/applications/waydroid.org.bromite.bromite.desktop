@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Bromite
+Exec=waydroid app launch org.bromite.bromite
+Icon=/home/manv/.local/share/waydroid/data/icons/org.bromite.bromite.png
+X-Purism-FormFactor=Workstation;Mobile;

@@ -1,0 +1,29 @@
+color-link comment "italic #928374"
+color-link symbol "#fbf1c7"
+color-link constant "#d3869b"
+color-link constant.string "#b8bb26"
+color-link constant.string.char "#d3869b"
+color-link identifier "#8ec07d"
+color-link statement "bold #f73028"
+color-link preproc "#fb4934"
+color-link type "#fabd2f"
+color-link special "#d3869b"
+color-link underlined "underline #282828"
+color-link error "bold #282828,#fb4934"
+color-link diff-added "#00AF00"
+color-link diff-modified "#FFAF00"
+color-link diff-deleted "#D70000"
+color-link gutter-error "#fb4934"
+color-link gutter-warning "#d79921"
+color-link line-number "#928374"
+color-link current-line-number "#7c6f64"
+color-link cursor-line "#3c3836"
+color-link color-column "#79740e"
+
+#user interface
+color-link message "bold,italic #ebdbb2" #Color of messages in the bottom line of the screen
+color-link indent-char "#fbf1c7" #Color of the character which indicates tabs if the option is enabled
+color-link tabbar "#ebdbb2,#3c3836dd" #Color of the tabbar that lists open files
+color-link statusline "#ebdbb2,#3c3836cc"
+# color-link selection "#ebdbb2"
+color-link divider "#3c3836"

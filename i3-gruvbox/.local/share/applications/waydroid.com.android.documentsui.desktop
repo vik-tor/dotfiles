@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Files
+Exec=waydroid app launch com.android.documentsui
+Icon=/home/manv/.local/share/waydroid/data/icons/com.android.documentsui.png
+X-Purism-FormFactor=Workstation;Mobile;

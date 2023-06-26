@@ -1,0 +1,45 @@
+#!/usr/bin/env sh
+# random_bg
+
+directory="$@"
+
+# Get resolution
+function my_res() {
+	res=`xrandr | grep '*' | grep -o -E '[0-9]+x+[0-9]+'`
+	high=`echo "$res" | cut -d "x" -f 2`
+	wide=`echo "$res" | cut -d "x" -f 1`
+}
+
+# Get a random image from $directory
+function rand_img() {
+	img=`ls -1 -b -R $directory | grep -i -e ".png" -e ".jpg" -e ".jpeg" | sort --random-sort | head -1`
+	img_dir=`find $directory -iname "$img"`
+}
+
+# Get the resolution of random image above
+function img_res() {
+	rand_img
+	img_high=`identify -format "%h" $img_dir`
+	img_wide=`identify -format "%w" $img_dir`
+}
+
+# Get screen ratio
+function proportion() {
+	my_res
+	img_res
+	ratio_high=`echo $img_high/$high | bc -l`
+	ratio_wide=`echo $img_wide/$wide | bc -l`
+}
+
+function scalar() {
+	proportion
+
+	if [[ `echo $ratio_wide > 1 | bc` = 1 || `echo $ratio_high > 1 | bc` = 1 ]]; then
+		nitrogen --set-scale "$img_dir"
+	else
+		nitrogen --set-zoom-fill "$img_dir"
+	fi
+}
+
+scalar
+exit

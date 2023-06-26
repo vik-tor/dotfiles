@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Open Sudoku
+Exec=waydroid app launch org.moire.opensudoku
+Icon=/home/manv/.local/share/waydroid/data/icons/org.moire.opensudoku.png
+X-Purism-FormFactor=Workstation;Mobile;

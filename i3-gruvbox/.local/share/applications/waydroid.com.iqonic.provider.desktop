@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Provider
+Exec=waydroid app launch com.iqonic.provider
+Icon=/home/manv/.local/share/waydroid/data/icons/com.iqonic.provider.png
+X-Purism-FormFactor=Workstation;Mobile;
